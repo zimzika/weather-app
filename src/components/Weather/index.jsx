@@ -35,6 +35,8 @@ import {
 const Weather = () => {
     const [weather, setWeather] = useState({});
 
+    // key c7ac89635ae942dc72f9641363823373
+
     // useEffect(() => {
     //     fetch("http://apiadvisor.climatempo.com.br/api/v1/climate/rain/locale/3477?token=ba6cb8dddbc396fa45d5ef0334c9b5ea")
     //         .then(response => response.json())
