@@ -137,7 +137,7 @@ const Weather = () => {
             });
     }, [location]);
 
-    const date = new Date((weather.dt - weather.timezone) * 1000);
+    const date = new Date((weather.dt * 1000) - weather.timezone);
 
     return (
         <>
@@ -147,11 +147,12 @@ const Weather = () => {
                 ) : (
                     <Container>
                         <Content>
+                            <h1>Refresh time: {date.toLocaleTimeString()}</h1>
                             <Cards>
                                 <WeatherCard image={bgImage}>
                                     <WeatherHeader>
                                         <WeatherDayName>{days[date.getDay()]}</WeatherDayName>
-                                        <WeatherYearDay>{date.getUTCDate()} {monthNames[date.getMonth()]} {date.getFullYear()}</WeatherYearDay>
+                                        <WeatherYearDay>{date.getDate()} {monthNames[date.getMonth()]} {date.getFullYear()}</WeatherYearDay>
                                         <WeatherLocation><FontAwesomeIcon icon={faMapMarkerAlt} size="1x" /> {weather.name}, {weather.sys.country}</WeatherLocation>
                                     </WeatherHeader>
                                     <WeatherCardContent>
@@ -170,7 +171,7 @@ const Weather = () => {
                                         <InfoCardDaysPreview>
                                             {
                                                 weatherList.list.map((item, index) => {
-                                                    if (index > 0 && index <= 3) {
+                                                    if (index % 8 === 0 && index > 0) {
                                                         return (
                                                             <InfoCardDayPreview>
                                                                 {
@@ -200,7 +201,8 @@ const Weather = () => {
                                                                         <FontAwesomeIcon icon={faCloudMoonRain} size="2x" />
                                                                     ) : null
                                                                 }
-                                                                <InfoCardDay>{days[new Date((item.dt - weather.timezone) * 1000).getDay()]}</InfoCardDay>
+                                                                {/* <p>{item.dt}</p> */}
+                                                                <InfoCardDay>{days[new Date((item.dt * 1000) - weather.timezone).getDay()].substring(0,3)}</InfoCardDay>
                                                                 <InfoCardTemp>{parseInt(item.main.temp, 10)}&#8451;</InfoCardTemp>
                                                             </InfoCardDayPreview>
                                                         )
