@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import sunny from '../../assets/sunny.jpg';
-
 export const Container = styled.div`
     width: 100vw;
     height: 100vh;
@@ -29,7 +27,7 @@ export const WeatherCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url(${sunny}), linear-gradient(to left, #7474BF, #348AC7);
+    background-image: url(${props => props.image}), linear-gradient(to left, #7474BF, #348AC7);
     background-blend-mode: overlay;
     background-size: cover;
     background-position: center center;
@@ -39,7 +37,7 @@ export const WeatherCard = styled.div`
     padding: 30px;
     border-radius: 30px;
     color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);;
 `
 
 export const WeatherHeader = styled.header``
